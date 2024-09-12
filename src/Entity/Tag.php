@@ -15,8 +15,26 @@ class Tag
   )]
   private ?int $id = null;
 
+  #[ORM\Column(
+    length: 60,
+    unique: true,
+  )]
+  private ?string $tagName = null;
+
   public function getId(): ?int
   {
     return $this->id;
+  }
+
+  public function getTagName(): ?string
+  {
+      return $this->tagName;
+  }
+
+  public function setTagName(string $tagName): static
+  {
+      $this->tagName = $tagName;
+
+      return $this;
   }
 }
