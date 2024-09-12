@@ -19,7 +19,12 @@ class Comment
   #[ORM\Column(length: 2500)]
   private ?string $commentMessage = null;
 
-  #[ORM\Column(type: Types::DATETIME_MUTABLE)]
+  #[ORM\Column(
+    type: Types::DATETIME_MUTABLE,
+    options: [
+      'default' => 'CURRENT_TIMESTAMP',
+    ],
+  )]
   private ?\DateTimeInterface $CommentDateCreated = null;
 
   public function getId(): ?int
