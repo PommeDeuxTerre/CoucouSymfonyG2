@@ -10,7 +10,7 @@ use Doctrine\Migrations\AbstractMigration;
 /**
  * Auto-generated Migration: Please modify to your needs!
  */
-final class Version20240912121728 extends AbstractMigration
+final class Version20240918123926 extends AbstractMigration
 {
     public function getDescription(): string
     {
@@ -20,12 +20,16 @@ final class Version20240912121728 extends AbstractMigration
     public function up(Schema $schema): void
     {
         // this up() migration is auto-generated, please modify it to your needs
-        $this->addSql('ALTER TABLE post ADD post_title VARCHAR(255) NOT NULL, ADD post_description LONGTEXT NOT NULL, ADD post_date_created DATETIME DEFAULT CURRENT_TIMESTAMP NOT NULL, ADD post_date_published DATETIME DEFAULT NULL, ADD post_is_published TINYINT(1) NOT NULL');
+        $this->addSql('ALTER TABLE post ADD user_id INT UNSIGNED NOT NULL');
+        $this->addSql('ALTER TABLE post ADD CONSTRAINT FK_5A8A6C8DA76ED395 FOREIGN KEY (user_id) REFERENCES user (id)');
+        $this->addSql('CREATE INDEX IDX_5A8A6C8DA76ED395 ON post (user_id)');
     }
 
     public function down(Schema $schema): void
     {
         // this down() migration is auto-generated, please modify it to your needs
-        $this->addSql('ALTER TABLE post DROP post_title, DROP post_description, DROP post_date_created, DROP post_date_published, DROP post_is_published');
+        $this->addSql('ALTER TABLE post DROP FOREIGN KEY FK_5A8A6C8DA76ED395');
+        $this->addSql('DROP INDEX IDX_5A8A6C8DA76ED395 ON post');
+        $this->addSql('ALTER TABLE post DROP user_id');
     }
 }

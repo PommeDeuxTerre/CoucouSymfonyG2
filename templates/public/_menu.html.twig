@@ -1,0 +1,8 @@
+<nav>
+  <a href="{{ path('homepage') }}">Accueil</a>
+  {% if is_granted("IS_AUTHENTICATED_FULLY") %}
+  <a href="{{ path('app_logout') }}">logout</a>
+  {% else %}
+  <a href="{{ path('app_login') }}">login</a>
+  {% endif %}
+</nav>
