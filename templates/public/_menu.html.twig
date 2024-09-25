@@ -1,5 +1,6 @@
 <nav>
   <a href="{{ path('homepage') }}">Accueil</a>
+  <a href="{{ path('app_admin_section_index') }}">CRUD</a>
   {% if is_granted("IS_AUTHENTICATED_FULLY") %}
   <a href="{{ path('app_logout') }}">logout</a>
   {% else %}
