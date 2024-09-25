@@ -8,11 +8,19 @@ use Symfony\Component\Routing\Attribute\Route;
 
 class PublicController extends AbstractController
 {
-    #[Route('/', name: 'homepage')]
-    public function index(): Response
-    {
-        return $this->render('public/index.html.twig', [
-            'controller_name' => 'PublicController',
-        ]);
-    }
+  #[Route('/', name: 'homepage')]
+  public function index(): Response
+  {
+    return $this->render('public/index.html.twig', [
+      'controller_name' => 'PublicController',
+    ]);
+  }
+
+  #[Route('/section/{id}', name: 'section')]
+  public function section(): Response
+  {
+    return $this->render('public/index.html.twig', [
+      'controller_name' => 'PublicController',
+    ]);
+  }
 }
